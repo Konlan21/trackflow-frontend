@@ -148,156 +148,181 @@ export default function Dashboard() {
   }
 
   // ---------- Render ----------
-  return (
-    <div className="space-y-8">
-      <div className="flex justify-end">
+// ---------- Render ----------
+return (
+  <div className="min-h-screen flex flex-col justify-between w-full bg-slate-50/50">
+    {/* Main Container - Spans Full Screen Width */}
+    <main className="w-full px-4 sm:px-8 lg:px-12 pt-6 pb-12 space-y-8">
+      
+      {/* Header Action */}
+      <div className="flex justify-between items-center border-b border-slate-200/80 pb-5">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Financial Overview</h1>
+          <p className="text-sm text-slate-500 mt-0.5">Track income, expenses, and AI-driven insights in real time.</p>
+        </div>
         <button
           onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-all shadow-md hover:shadow-indigo-200"
         >
-          <PlusCircle className="h-4 w-4" />
+          <PlusCircle className="h-5 w-5" />
           <span>Add Transaction</span>
         </button>
       </div>
 
-      {/* Summary cards */}
+      {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-md">
+        {/* Total Balance Card */}
+        <div className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 text-white p-6 rounded-2xl shadow-lg border border-indigo-500/20 relative overflow-hidden">
           <div className="flex justify-between items-center mb-4">
-            <span className="text-indigo-200 text-sm font-medium">Total Balance</span>
-            <div className="p-2 bg-indigo-500/30 rounded-lg">
-              <CreditCard className="h-5 w-5" />
+            <span className="text-indigo-100 text-sm font-medium tracking-wide">Total Balance</span>
+            <div className="p-2.5 bg-white/10 backdrop-blur-md rounded-xl">
+              <CreditCard className="h-5 w-5 text-indigo-100" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold mb-1">${balance.toFixed(2)}</div>
-          <span className="text-xs text-indigo-200">Current Net Balance</span>
+          <div className="text-4xl font-extrabold mb-2 tracking-tight">${balance.toFixed(2)}</div>
+          <span className="text-xs text-indigo-200 font-medium bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
+            Current Net Balance
+          </span>
         </div>
 
-        <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+        {/* Revenue Card */}
+        <div className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
           <div className="flex justify-between items-center mb-4">
             <span className="text-slate-500 text-sm font-medium">Total Revenue</span>
-            <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+            <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl">
               <ArrowDownLeft className="h-5 w-5" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-slate-900 mb-1">+${totalIncome.toFixed(2)}</div>
-          <span className="text-xs text-emerald-600 font-semibold">▲ Income tracking</span>
+          <div className="text-3xl font-bold text-slate-900 mb-2 tracking-tight">+${totalIncome.toFixed(2)}</div>
+          <span className="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200/60 font-semibold px-2.5 py-1 rounded-full">
+            ▲ Income tracking
+          </span>
         </div>
 
-        <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+        {/* Expenditure Card */}
+        <div className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
           <div className="flex justify-between items-center mb-4">
             <span className="text-slate-500 text-sm font-medium">Total Expenditure</span>
-            <div className="p-2 bg-rose-50 text-rose-600 rounded-lg">
+            <div className="p-2.5 bg-rose-50 text-rose-600 rounded-xl">
               <ArrowUpRight className="h-5 w-5" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-slate-900 mb-1">-${totalExpense.toFixed(2)}</div>
-          <span className="text-xs text-rose-600 font-semibold">▼ Expenses tracking</span>
+          <div className="text-3xl font-bold text-slate-900 mb-2 tracking-tight">-${totalExpense.toFixed(2)}</div>
+          <span className="text-xs text-rose-700 bg-rose-50 border border-rose-200/60 font-semibold px-2.5 py-1 rounded-full">
+            ▼ Expenses tracking
+          </span>
         </div>
       </div>
 
-      {/* AI Insight panel */}
-      <section className="bg-gradient-to-r from-violet-900 via-indigo-900 to-slate-900 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden border border-indigo-700/50">
-        <div className="absolute -right-12 -top-12 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+      {/* AI Insight Panel */}
+      <section className="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 rounded-2xl p-7 text-white shadow-2xl relative overflow-hidden border border-indigo-500/30">
+        {/* Glow backdrop */}
+        <div className="absolute -right-10 -top-10 w-72 h-72 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -left-10 -bottom-10 w-72 h-72 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-indigo-800/60">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-indigo-500/20 border border-indigo-400/30 rounded-xl text-indigo-300">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-indigo-800/40 relative z-10">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-indigo-500/20 border border-indigo-400/30 rounded-xl text-indigo-300 shadow-inner">
               <Bot className="h-6 w-6" />
             </div>
             <div>
-              <h2 className="text-lg font-bold flex items-center gap-2">
+              <h2 className="text-xl font-bold flex items-center gap-2.5 text-white">
                 AI Smart Insights
-                <span className="text-xs bg-indigo-500/30 text-indigo-300 border border-indigo-400/20 px-2 py-0.5 rounded-full font-normal">
+                <span className="text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 px-2.5 py-0.5 rounded-full font-medium tracking-wide">
                   Real-time Analysis
                 </span>
               </h2>
-              <p className="text-xs text-indigo-200/80">Automated audit of your income vs. expenditure patterns</p>
+              <p className="text-sm text-indigo-200/80 mt-0.5">Automated audit of your income vs. expenditure patterns</p>
             </div>
           </div>
 
           <button
             onClick={fetchOverview}
-            className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-indigo-100 text-xs font-semibold px-3 py-2 rounded-lg border border-white/10 transition-colors self-start sm:self-auto"
+            className="flex items-center justify-center gap-2 bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-100 text-xs font-semibold px-4 py-2.5 rounded-xl border border-indigo-400/30 transition-all self-start sm:self-auto shadow-sm"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${loadingOverview ? "animate-spin" : ""}`} />
+            <RefreshCw className={`h-4 w-4 ${loadingOverview ? "animate-spin" : ""}`} />
             <span>Re-analyze Spending</span>
           </button>
         </div>
 
-        <div className="pt-6">
-          <div className="bg-white/5 border border-white/10 p-3.5 rounded-xl text-xs text-indigo-100">{overview}</div>
+        {/* Overview Box */}
+        <div className="pt-6 relative z-10">
+          <div className="bg-slate-900/60 border border-indigo-800/50 p-4 rounded-xl text-sm leading-relaxed text-indigo-100 shadow-inner">
+            {overview}
+          </div>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-indigo-800/60">
+        {/* AI Prompt Input */}
+        <div className="mt-6 pt-5 border-t border-indigo-800/40 relative z-10">
           <form onSubmit={handleAskAi} className="relative flex items-center">
-            <Sparkles className="h-4 w-4 absolute left-3 text-indigo-300" />
+            <Sparkles className="h-5 w-5 absolute left-3.5 text-indigo-400" />
             <input
               type="text"
               value={aiQuery}
               onChange={(e) => setAiQuery(e.target.value)}
               placeholder="Ask AI advisor (e.g., 'How much can I spend on dining out this weekend?')"
-              className="w-full bg-slate-950/50 border border-indigo-700/50 rounded-xl pl-9 pr-24 py-2.5 text-xs text-white placeholder-indigo-300/60 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="w-full bg-slate-950/80 border border-indigo-700/60 rounded-xl pl-11 pr-28 py-3 text-sm text-white placeholder-indigo-300/50 focus:outline-none focus:ring-2 focus:ring-indigo-400/80 transition-all shadow-inner"
             />
             <button
               type="submit"
-              className="absolute right-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+              className="absolute right-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors shadow-sm"
             >
               Ask AI
             </button>
           </form>
+
           {showAiResponse && (
-            <div className="mt-3 p-3 bg-indigo-950/80 border border-indigo-600/50 rounded-lg text-xs text-indigo-100">
-              <span className="font-bold text-indigo-300">AI Response: </span>
+            <div className="mt-4 p-4 bg-indigo-950/90 border border-indigo-600/50 rounded-xl text-sm text-indigo-100 leading-relaxed shadow-lg">
+              <span className="font-bold text-indigo-300 mr-2">AI Response:</span>
               <span>{aiResponse}</span>
             </div>
           )}
         </div>
       </section>
 
-      {/* Transactions table */}
+      {/* Transactions Table */}
       {loading ? (
-        <div className="text-center text-slate-400 py-8 text-sm">Loading transactions...</div>
+        <div className="text-center text-slate-400 py-12 text-base font-medium">Loading transactions...</div>
       ) : (
-        <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm overflow-hidden w-full">
           <div className="p-5 border-b border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
-            <h2 className="text-lg font-bold text-slate-800">Recent Transactions</h2>
-            <div className="relative flex-1 sm:w-64 w-full">
-              <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <h2 className="text-xl font-bold text-slate-900">Recent Transactions</h2>
+            <div className="relative flex-1 sm:w-80 w-full">
+              <Search className="h-4 w-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search items..."
-                className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
               />
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto w-full">
             <table className="w-full text-left text-sm">
-              <thead className="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold tracking-wider">
+              <thead className="bg-slate-50/80 text-slate-500 uppercase text-xs font-bold tracking-wider border-b border-slate-100">
                 <tr>
-                  <th className="px-6 py-3">Transaction</th>
-                  <th className="px-6 py-3">Category</th>
-                  <th className="px-6 py-3">Date</th>
-                  <th className="px-6 py-3">Amount</th>
-                  <th className="px-6 py-3 text-right">Actions</th>
+                  <th className="px-6 py-4">Transaction</th>
+                  <th className="px-6 py-4">Category</th>
+                  <th className="px-6 py-4">Date</th>
+                  <th className="px-6 py-4">Amount</th>
+                  <th className="px-6 py-4 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {rows.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-6 py-8 text-center text-slate-400 text-sm">
+                    <td colSpan={5} className="px-6 py-10 text-center text-slate-400 text-sm">
                       No transactions found.
                     </td>
                   </tr>
                 ) : (
                   rows.map((r) => (
                     <tr key={`${r.type}-${r.id}`} className="hover:bg-slate-50/80 transition-colors">
-                      <td className="px-6 py-4 font-medium text-slate-900 flex items-center gap-3">
+                      <td className="px-6 py-4 font-semibold text-slate-900 flex items-center gap-3">
                         <div
-                          className={`p-2 rounded-lg ${
+                          className={`p-2 rounded-xl ${
                             r.type === "income" ? "bg-emerald-50 text-emerald-600" : "bg-rose-50 text-rose-600"
                           }`}
                         >
@@ -310,11 +335,11 @@ export default function Dashboard() {
                         {r.name}
                       </td>
                       <td className="px-6 py-4">
-                        <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full">
+                        <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full border border-slate-200/50">
                           {r.category}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-slate-500">{new Date(r.date).toLocaleDateString()}</td>
+                      <td className="px-6 py-4 text-slate-500 font-medium">{new Date(r.date).toLocaleDateString()}</td>
                       <td
                         className={`px-6 py-4 font-bold ${
                           r.type === "income" ? "text-emerald-600" : "text-slate-900"
@@ -325,7 +350,7 @@ export default function Dashboard() {
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => handleDeleteTransaction(r.type, r.id)}
-                          className="text-slate-400 hover:text-rose-600 p-1"
+                          className="text-slate-400 hover:text-rose-600 p-1.5 rounded-lg hover:bg-rose-50 transition-colors"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -339,18 +364,18 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Add Transaction modal */}
+      {/* Add Transaction Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 relative">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Add Transaction</h3>
+        <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative">
+            <h3 className="text-xl font-bold text-slate-900 mb-5">Add Transaction</h3>
 
-            <div className="flex p-1 bg-slate-100 rounded-xl mb-4">
+            <div className="flex p-1 bg-slate-100 rounded-xl mb-5">
               <button
                 type="button"
                 onClick={() => setTxnType("expense")}
-                className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                  txnType === "expense" ? "bg-white shadow-sm text-slate-900" : "text-slate-500"
+                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
+                  txnType === "expense" ? "bg-white shadow-sm text-slate-900" : "text-slate-500 hover:text-slate-700"
                 }`}
               >
                 Expenditure
@@ -358,8 +383,8 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => setTxnType("income")}
-                className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                  txnType === "income" ? "bg-white shadow-sm text-slate-900" : "text-slate-500"
+                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
+                  txnType === "income" ? "bg-white shadow-sm text-slate-900" : "text-slate-500 hover:text-slate-700"
                 }`}
               >
                 Income
@@ -368,7 +393,7 @@ export default function Dashboard() {
 
             <form className="space-y-4" onSubmit={handleFormSubmit}>
               <div>
-                <label className="block text-xs font-semibold text-slate-600 mb-1">
+                <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
                   {txnType === "expense" ? "Name of Item" : "Name of Revenue"}
                 </label>
                 <input
@@ -377,12 +402,14 @@ export default function Dashboard() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={txnType === "expense" ? "e.g. Groceries" : "e.g. Salary"}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-600 mb-1">Amount ($)</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                  Amount ($)
+                </label>
                 <input
                   type="number"
                   step="0.01"
@@ -391,17 +418,19 @@ export default function Dashboard() {
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   placeholder="0.00"
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               {txnType === "expense" && (
                 <div>
-                  <label className="block text-xs font-semibold text-slate-600 mb-1">Category</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                    Category
+                  </label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value as ExpenditureCategory)}
-                    className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
                     {CATEGORIES.map((c) => (
                       <option key={c.value} value={c.value}>
@@ -412,20 +441,20 @@ export default function Dashboard() {
                 </div>
               )}
 
-              {formError && <p className="text-xs text-rose-600">{formError}</p>}
+              {formError && <p className="text-xs font-semibold text-rose-600 mt-1">{formError}</p>}
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
+              <div className="flex justify-end gap-3 pt-5 mt-2 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="px-4 py-2 border border-slate-200 text-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors"
+                  className="px-4 py-2.5 border border-slate-200 text-slate-600 rounded-xl text-sm font-semibold hover:bg-slate-50 transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 disabled:opacity-60 shadow-sm transition-colors"
+                  className="px-4 py-2.5 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-700 disabled:opacity-60 shadow-md transition-colors"
                 >
                   {saving ? "Saving..." : "Save Transaction"}
                 </button>
@@ -434,6 +463,29 @@ export default function Dashboard() {
           </div>
         </div>
       )}
-    </div>
-  );
+    </main>
+
+    {/* Full Width Footer */}
+    <footer className="w-full bg-white border-t border-slate-200/80 text-slate-500 text-sm">
+      <div className="w-full px-4 sm:px-8 lg:px-12 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="font-semibold text-slate-700">Financial Advisor AI</span>
+          <span className="text-slate-400">|</span>
+          <span className="text-slate-500 text-xs">System Active</span>
+        </div>
+
+        <div className="flex items-center gap-6 text-xs text-slate-500">
+          <a href="#" className="hover:text-slate-900 transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-slate-900 transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-slate-900 transition-colors">Support</a>
+        </div>
+
+        <p className="text-xs text-slate-400">
+          © {new Date().getFullYear()} Finance Dashboard. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+);
 }
