@@ -3,8 +3,6 @@
 The React + TypeScript frontend for TrackFlow, an AI-powered personal finance tracker. Provides a dashboard for tracking income and expenses, managing budgets and goals, and chatting with an AI financial assistant.
 
 **Live app:** https://gettrackflow-ai.vercel.app
-**Backend repo:** [link to your backend repo]
-**Backend API:** https://trackflow-backend-483d.onrender.com
 
 ## Features
 
@@ -28,14 +26,14 @@ The React + TypeScript frontend for TrackFlow, an AI-powered personal finance tr
 ### Prerequisites
 
 - Node.js 18+
-- The [TrackFlow backend](link-to-backend-repo) running locally or deployed
+- The [TrackFlow backend] running locally or deployed
 
 ### Setup
 
 ```bash
 # Clone the repo
-git clone https://github.com/Konlan21/<frontend-repo-name>.git
-cd <frontend-repo-name>
+git clone https://github.com/Konlan21/trackflow-frontend.git
+cd trackflow-frontendq
 
 # Install dependencies
 npm install
